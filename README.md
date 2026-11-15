@@ -2,7 +2,7 @@
 
 Uma página web que busca personagens de **Os Simpsons** em tempo real e os exibe em cards interativos, criados inteiramente com JavaScript.
 
-🔗 **Site publicado:** [seuusuario.github.io/simpsons-cards](https://seuusuario.github.io/simpsons-cards)
+🔗 **Site publicado:** [joaowitor-fecaf.github.io/simpsons-cards](https://joaowitor-fecaf.github.io/simpsons-cards/)
 🎬 **Vídeo de apresentação:** [link do YouTube](#)
 
 ---
@@ -73,7 +73,7 @@ Não há dependências para instalar.
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/simpsons-cards.git
+   git clone https://github.com/joaowitor-fecaf/simpsons-cards.git
    ```
 2. Abra a pasta no VS Code.
 3. Clique com o botão direito no `index.html` e escolha **Open with Live Server**.
