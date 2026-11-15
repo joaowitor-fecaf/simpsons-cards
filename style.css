@@ -1,0 +1,643 @@
+/* =========================================================
+   Springfield em Cards — Estilo inspirado em Os Simpsons
+   ========================================================= */
+
+/* ---------- Variáveis (cores e medidas reutilizadas) ---------- */
+:root {
+  --amarelo: #FED90F;
+  --amarelo-escuro: #E8B800;
+  --ceu: #70D1FE;
+  --ceu-forte: #3FAEE8;
+  --ceu-claro: #BDEBFF;
+  --rosa: #F47BB4;
+  --rosa-escuro: #D94F93;
+  --verde: #3CB44B;
+  --vermelho: #E4352B;
+  --marrom: #C68642;
+  --preto: #1A1A1A;
+  --branco: #FFFFFF;
+  --creme: #FFF6CC;
+  --azul-escuro: #1E4F91;
+
+  --fonte-titulo: 'Luckiest Guy', 'Comic Sans MS', cursive;
+  --fonte-texto: 'Nunito', Arial, sans-serif;
+
+  --borda: 4px solid var(--preto);
+  --sombra: 6px 6px 0 var(--preto);
+  --mola: cubic-bezier(.34, 1.56, .64, 1); /* curva com "quique" */
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--preto);
+  background: var(--ceu);
+  line-height: 1.5;
+}
+
+img { max-width: 100%; display: block; }
+
+code {
+  background: var(--amarelo);
+  border: 2px solid var(--preto);
+  border-radius: 6px;
+  padding: 0 .35rem;
+  font-size: .9em;
+}
+
+/* ---------- Cabeçalho ---------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--amarelo);
+  border-bottom: var(--borda);
+}
+
+.menu {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: var(--preto);
+  text-decoration: none;
+}
+
+.logo span { color: var(--rosa-escuro); margin-left: .4rem; }
+
+.menu ul { list-style: none; display: flex; gap: .8rem; }
+
+.menu ul a {
+  font-weight: 800;
+  color: var(--preto);
+  text-decoration: none;
+  padding: .35rem .8rem;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  transition: background .2s, border-color .2s;
+}
+
+.menu ul a:hover { background: var(--branco); border-color: var(--preto); }
+
+/* ---------- Abertura (hero) ---------- */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--ceu-forte) 0%, var(--ceu) 55%, var(--ceu-claro) 100%);
+}
+
+/* Nuvens feitas só com CSS, passando pelo céu */
+.nuvens { position: absolute; inset: 0; pointer-events: none; }
+
+.nuvem {
+  position: absolute;
+  left: -260px;
+  width: 200px;
+  height: 60px;
+  background: var(--branco);
+  border-radius: 999px;
+  animation: flutuar linear infinite;
+}
+
+.nuvem::before,
+.nuvem::after {
+  content: '';
+  position: absolute;
+  background: var(--branco);
+  border-radius: 50%;
+}
+
+.nuvem::before { width: 90px;  height: 90px;  top: -45px; left: 30px; }
+.nuvem::after  { width: 110px; height: 110px; top: -60px; right: 25px; }
+
+.n1 { top: 18%; animation-duration: 40s; }
+.n2 { top: 40%; transform: scale(.7); animation-duration: 55s; animation-delay: -18s; }
+.n3 { top: 70%; transform: scale(1.2); animation-duration: 48s; animation-delay: -30s; }
+.n4 { top: 8%;  transform: scale(.55); animation-duration: 65s; animation-delay: -45s; }
+
+@keyframes flutuar {
+  from { translate: 0 0; }
+  to   { translate: calc(100vw + 560px) 0; }
+}
+
+.titulo-hero {
+  position: relative;
+  z-index: 1;
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: clamp(3rem, 11vw, 7.5rem);
+  line-height: .95;
+  color: var(--amarelo);
+  -webkit-text-stroke: 3px var(--preto);
+  text-shadow: 6px 6px 0 var(--preto);
+  animation: surgir 1s var(--mola) backwards;
+}
+
+.titulo-hero span { display: block; }
+
+.titulo-hero span:last-child {
+  color: var(--rosa);
+  font-size: .55em;
+  margin-top: .3rem;
+  animation: balancar 3s ease-in-out infinite;
+}
+
+.subtitulo {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 1.8rem auto 2rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: 18px;
+  box-shadow: var(--sombra);
+  animation: surgir 1s .2s var(--mola) backwards;
+}
+
+.botao {
+  position: relative;
+  z-index: 1;
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--preto);
+  text-decoration: none;
+  background: var(--amarelo);
+  border: var(--borda);
+  border-radius: 14px;
+  padding: .7rem 1.8rem;
+  box-shadow: var(--sombra);
+  transition: transform .15s, box-shadow .15s;
+  animation: surgir 1s .4s var(--mola) backwards;
+}
+
+.botao:hover  { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--preto); }
+.botao:active { transform: translate(4px, 4px);   box-shadow: 2px 2px 0 var(--preto); }
+
+@keyframes surgir {
+  from { opacity: 0; transform: scale(.3) translateY(80px); }
+}
+
+@keyframes balancar {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2deg) translateY(-4px); }
+}
+
+/* ---------- Sobre ---------- */
+.sobre {
+  background: var(--creme);
+  border-top: var(--borda);
+  padding: 4rem 1.5rem;
+}
+
+.sobre-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.sobre-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  padding: 1.6rem;
+}
+
+.sobre-card:nth-child(1) { rotate: -1deg; }
+.sobre-card:nth-child(2) { rotate: 1deg; }
+
+.sobre-card h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--rosa-escuro);
+  margin-bottom: .6rem;
+}
+
+/* ---------- Seção de personagens ---------- */
+.personagens {
+  /* Amarelo com pontinhos, efeito de revista em quadrinhos */
+  background-color: var(--amarelo);
+  background-image: radial-gradient(rgba(0, 0, 0, .13) 2px, transparent 2px);
+  background-size: 22px 22px;
+  border-top: var(--borda);
+  padding: 4rem 1.5rem 5rem;
+  scroll-margin-top: 60px;
+}
+
+.titulo-secao {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  text-align: center;
+  color: var(--branco);
+  -webkit-text-stroke: 2px var(--preto);
+  text-shadow: 5px 5px 0 var(--preto);
+}
+
+.controles {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#busca {
+  flex: 1 1 260px;
+  max-width: 380px;
+  font: 700 1rem var(--fonte-texto);
+  padding: .75rem 1rem;
+  border: var(--borda);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--preto);
+  outline: none;
+}
+
+#busca:focus { box-shadow: 4px 4px 0 var(--rosa-escuro); }
+
+.filtros { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+
+.filtro {
+  font: 800 .95rem var(--fonte-texto);
+  padding: .5rem 1rem;
+  background: var(--branco);
+  border: 3px solid var(--preto);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+
+.filtro:hover { transform: translateY(-2px); }
+.filtro.ativo { background: var(--rosa); color: var(--branco); }
+
+/* ---------- Grade de cards ---------- */
+.cards {
+  max-width: 1200px;
+  min-height: 320px;
+  margin: 2.5rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+/* Card: entra "quicando", um de cada vez (--i é definido no JS) */
+.card {
+  height: 410px;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+  animation: entrar .7s var(--mola) backwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(80px) rotate(-6deg) scale(.7); }
+}
+
+/* Transição de saída ao trocar de página */
+.cards.saindo .card {
+  animation: sair .35s ease-in forwards;
+  animation-delay: calc(var(--i, 0) * 15ms);
+}
+
+@keyframes sair {
+  to { opacity: 0; transform: translateY(-40px) rotate(4deg) scale(.85); }
+}
+
+/* Parte que gira (frente e verso) */
+.card-interno {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+.card.virado .card-interno {
+  transform: rotateX(var(--rx, 0deg)) rotateY(calc(180deg + var(--ry, 0deg)));
+}
+
+/* Enquanto o mouse inclina o card, a resposta é mais rápida */
+.card.inclinando .card-interno { transition: transform .12s ease-out; }
+
+.card-frente,
+.card-verso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  border: var(--borda);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-frente { background: var(--branco); }
+
+.card-verso {
+  background: var(--rosa);
+  transform: rotateY(180deg);
+  justify-content: center;
+}
+
+.card:focus-visible .card-frente,
+.card:focus-visible .card-verso {
+  outline: 4px dashed var(--azul-escuro);
+  outline-offset: 5px;
+}
+
+/* Frente do card */
+.card-topo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: .5px;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.fav {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--vermelho);
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.fav:hover { transform: scale(1.2); }
+.fav.ativo { animation: pulsar .45s; }
+
+@keyframes pulsar {
+  50% { transform: scale(1.6); }
+}
+
+.card-foto {
+  width: 100%;
+  height: 200px;
+  margin: .6rem 0 .8rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 62%, var(--amarelo) 0 52%, transparent 53%);
+}
+
+.card-foto img {
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform .3s var(--mola);
+}
+
+.card:hover .card-foto img { transform: scale(1.07) translateY(-5px); }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 800;
+  font-size: .85rem;
+  padding: .2rem .8rem;
+  background: #E6F8E9;
+  border: 2px solid var(--preto);
+  border-radius: 999px;
+}
+
+.status::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--verde);
+}
+
+.status.morto { background: #FDE6E4; }
+.status.morto::before { background: var(--vermelho); }
+
+.ocupacao {
+  margin-top: .5rem;
+  font-weight: 700;
+  font-size: .95rem;
+  color: #444;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dica {
+  margin-top: auto;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+
+/* Verso do card */
+.nome-verso {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  color: var(--branco);
+  -webkit-text-stroke: 1px var(--preto);
+  text-shadow: 3px 3px 0 var(--preto);
+}
+
+.detalhes {
+  list-style: none;
+  width: 100%;
+  margin: 1rem 0;
+  display: grid;
+  gap: .45rem;
+}
+
+.detalhes li {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .9rem;
+  background: var(--branco);
+  border: 2px solid var(--preto);
+  border-radius: 10px;
+  padding: .35rem .7rem;
+}
+
+.balao {
+  position: relative;
+  width: 100%;
+  margin: .3rem 0 1.4rem;
+  padding: .8rem 1rem;
+  font-weight: 800;
+  font-style: italic;
+  font-size: .95rem;
+  background: var(--branco);
+  border: 3px solid var(--preto);
+  border-radius: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-verso .dica { margin-top: 0; color: var(--preto); }
+
+/* ---------- Carregando (um donut girando) ---------- */
+.carregando,
+.erro {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+}
+
+.donut {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 32%, var(--branco) 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 34%, var(--ceu-forte) 0 3px, transparent 4px),
+    radial-gradient(circle at 66% 70%, var(--amarelo) 0 3px, transparent 4px),
+    radial-gradient(circle at 30% 68%, var(--verde) 0 3px, transparent 4px),
+    radial-gradient(circle, transparent 0 20%, var(--marrom) 21% 26%, var(--rosa) 27% 62%, var(--marrom) 63% 70%, transparent 71%);
+  animation: girar 1.1s linear infinite;
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.erro button {
+  font: 400 1.1rem var(--fonte-titulo);
+  letter-spacing: 1px;
+  padding: .6rem 1.4rem;
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--preto);
+  cursor: pointer;
+}
+
+.vazio {
+  text-align: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  margin: -1rem 0 2rem;
+}
+
+/* ---------- Paginação ---------- */
+.paginacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.paginacao button {
+  font: 400 1.1rem var(--fonte-titulo);
+  letter-spacing: 1px;
+  padding: .6rem 1.3rem;
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--preto);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.paginacao button:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--preto); }
+.paginacao button:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--preto); }
+.paginacao button:disabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
+
+#pagina {
+  font-weight: 800;
+  padding: .4rem 1rem;
+  background: var(--branco);
+  border: 3px solid var(--preto);
+  border-radius: 999px;
+}
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  background: var(--azul-escuro);
+  color: var(--branco);
+  border-top: var(--borda);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: .9rem;
+  display: grid;
+  gap: .4rem;
+}
+
+.rodape a { color: var(--amarelo); font-weight: 800; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 600px) {
+  .menu ul { display: none; }
+  .hero { min-height: 72vh; }
+  .subtitulo { font-size: 1rem; }
+  .cards { gap: 1.5rem; }
+}
+
+/* ---------- Acessibilidade: menos movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cards dinâmicos dos personagens de Os Simpsons, consumindo a The Simpsons API com JavaScript.">
+  <title>Springfield em Cards | The Simpsons API</title>
+
+  <!-- Fontes: Luckiest Guy (títulos estilo desenho) e Nunito (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="topo">
+    <nav class="menu">
+      <a href="#inicio" class="logo">Springfield<span>em Cards</span></a>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#personagens">Personagens</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== ABERTURA (céu com nuvens, como na abertura da série) ===== -->
+  <section class="hero" id="inicio">
+    <div class="nuvens" aria-hidden="true">
+      <span class="nuvem n1"></span>
+      <span class="nuvem n2"></span>
+      <span class="nuvem n3"></span>
+      <span class="nuvem n4"></span>
+    </div>
+
+    <h1 class="titulo-hero">
+      <span>Springfield</span>
+      <span>em Cards</span>
+    </h1>
+
+    <p class="subtitulo">
+      Conheça <strong id="total">mais de mil</strong> personagens da família amarela
+      mais famosa da TV, carregados em tempo real da <em>The Simpsons API</em>.
+    </p>
+
+    <a href="#personagens" class="botao">Ver personagens</a>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="sobre" id="sobre">
+    <div class="sobre-container">
+      <article class="sobre-card">
+        <h2>Sobre a série</h2>
+        <p>
+          Criada por Matt Groening, <strong>Os Simpsons</strong> estreou em 1989 e virou um
+          dos maiores sucessos da animação nos anos 90 e 2000. Homer, Marge, Bart, Lisa e
+          Maggie vivem na cidade fictícia de Springfield, cercados por centenas de
+          personagens marcantes.
+        </p>
+      </article>
+
+      <article class="sobre-card">
+        <h2>Como funciona</h2>
+        <p>
+          Nenhum card abaixo está escrito no HTML. O JavaScript busca os dados na API com
+          <code>fetch</code> e monta cada card com <code>createElement</code> e
+          <code>appendChild</code>. <strong>Clique em um card para virá-lo</strong> e ver
+          os detalhes do personagem.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PERSONAGENS (os cards são criados pelo JavaScript) ===== -->
+  <main class="personagens" id="personagens">
+    <h2 class="titulo-secao">Personagens</h2>
+
+    <div class="controles">
+      <input type="search" id="busca" placeholder="Buscar nesta página..." aria-label="Buscar personagem pelo nome">
+
+      <div class="filtros" role="group" aria-label="Filtrar personagens">
+        <button type="button" class="filtro ativo" data-filtro="todos">Todos</button>
+        <button type="button" class="filtro" data-filtro="vivos">Vivos</button>
+        <button type="button" class="filtro" data-filtro="falecidos">Falecidos</button>
+        <button type="button" class="filtro" data-filtro="favoritos">♥ Favoritos</button>
+      </div>
+    </div>
+
+    <!-- Container vazio: o JavaScript preenche com os cards -->
+    <div id="cards" class="cards" aria-live="polite"></div>
+
+    <p id="vazio" class="vazio" hidden>Nenhum personagem encontrado nesta página... D'oh!</p>
+
+    <nav class="paginacao" aria-label="Paginação">
+      <button type="button" id="anterior" disabled>◀ Anterior</button>
+      <span id="pagina">Página 1</span>
+      <button type="button" id="proxima" disabled>Próxima ▶</button>
+    </nav>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <p>
+      Dados: <a href="https://thesimpsonsapi.com/" target="_blank" rel="noopener">The Simpsons API</a>,
+      com conteúdo da The Simpsons Wiki sob licença CC BY-SA.
+    </p>
+    <p>Projeto acadêmico de Web Development Front-End (UniFECAF), sem fins comerciais. Desenvolvido por João.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
