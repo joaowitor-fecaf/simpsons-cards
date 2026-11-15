@@ -1,4 +1,4 @@
-# 🍩 Springfield em Cards
+# 🍩 Springfield e suas Caras
 
 Uma página web que busca personagens de **Os Simpsons** em tempo real e os exibe em cards interativos, criados inteiramente com JavaScript.
 

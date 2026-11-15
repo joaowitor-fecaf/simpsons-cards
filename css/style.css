@@ -1,11 +1,8 @@
-/* =========================================================
-   Springfield em Cards — Estilo inspirado em Os Simpsons
-   ========================================================= */
+/* Springfield e suas Caras — visual inspirado em Os Simpsons */
 
-/* ---------- Variáveis (cores e medidas reutilizadas) ---------- */
+/* ===== Variáveis ===== */
 :root {
   --amarelo: #FED90F;
-  --amarelo-escuro: #E8B800;
   --ceu: #70D1FE;
   --ceu-forte: #3FAEE8;
   --ceu-claro: #BDEBFF;
@@ -24,10 +21,10 @@
 
   --borda: 4px solid var(--preto);
   --sombra: 6px 6px 0 var(--preto);
-  --mola: cubic-bezier(.34, 1.56, .64, 1); /* curva com "quique" */
+  --mola: cubic-bezier(.34, 1.56, .64, 1); /* passa um pouco do ponto e volta */
 }
 
-/* ---------- Base ---------- */
+/* ===== Base ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 [hidden] { display: none !important; }
 
@@ -50,7 +47,7 @@ code {
   font-size: .9em;
 }
 
-/* ---------- Cabeçalho ---------- */
+/* ===== Cabeçalho ===== */
 .topo {
   position: sticky;
   top: 0;
@@ -93,7 +90,7 @@ code {
 
 .menu ul a:hover { background: var(--branco); border-color: var(--preto); }
 
-/* ---------- Abertura (hero) ---------- */
+/* ===== Abertura ===== */
 .hero {
   position: relative;
   min-height: 85vh;
@@ -107,7 +104,7 @@ code {
   background: linear-gradient(180deg, var(--ceu-forte) 0%, var(--ceu) 55%, var(--ceu-claro) 100%);
 }
 
-/* Nuvens feitas só com CSS, passando pelo céu */
+/* Nuvens feitas só com CSS */
 .nuvens { position: absolute; inset: 0; pointer-events: none; }
 
 .nuvem {
@@ -207,7 +204,7 @@ code {
   50%      { transform: rotate(2deg) translateY(-4px); }
 }
 
-/* ---------- Sobre ---------- */
+/* ===== Sobre ===== */
 .sobre {
   background: var(--creme);
   border-top: var(--borda);
@@ -241,9 +238,9 @@ code {
   margin-bottom: .6rem;
 }
 
-/* ---------- Seção de personagens ---------- */
+/* ===== Personagens ===== */
 .personagens {
-  /* Amarelo com pontinhos, efeito de revista em quadrinhos */
+  /* pontinhos de gibi */
   background-color: var(--amarelo);
   background-image: radial-gradient(rgba(0, 0, 0, .13) 2px, transparent 2px);
   background-size: 22px 22px;
@@ -300,7 +297,7 @@ code {
 .filtro:hover { transform: translateY(-2px); }
 .filtro.ativo { background: var(--rosa); color: var(--branco); }
 
-/* ---------- Grade de cards ---------- */
+/* ===== Cards ===== */
 .cards {
   max-width: 1200px;
   min-height: 320px;
@@ -310,7 +307,7 @@ code {
   gap: 2rem;
 }
 
-/* Card: entra "quicando", um de cada vez (--i é definido no JS) */
+/* Os cards entram um de cada vez; o --i vem do JavaScript */
 .card {
   height: 410px;
   perspective: 1000px;
@@ -324,7 +321,7 @@ code {
   from { opacity: 0; transform: translateY(80px) rotate(-6deg) scale(.7); }
 }
 
-/* Transição de saída ao trocar de página */
+/* Saída ao trocar de página */
 .cards.saindo .card {
   animation: sair .35s ease-in forwards;
   animation-delay: calc(var(--i, 0) * 15ms);
@@ -334,7 +331,7 @@ code {
   to { opacity: 0; transform: translateY(-40px) rotate(4deg) scale(.85); }
 }
 
-/* Parte que gira (frente e verso) */
+/* Parte que gira */
 .card-interno {
   position: relative;
   width: 100%;
@@ -348,7 +345,7 @@ code {
   transform: rotateX(var(--rx, 0deg)) rotateY(calc(180deg + var(--ry, 0deg)));
 }
 
-/* Enquanto o mouse inclina o card, a resposta é mais rápida */
+/* Seguindo o mouse, a resposta precisa ser rápida */
 .card.inclinando .card-interno { transition: transform .12s ease-out; }
 
 .card-frente,
@@ -459,6 +456,8 @@ code {
 
 .status.morto { background: #FDE6E4; }
 .status.morto::before { background: var(--vermelho); }
+.status.outro { background: #EEEEEE; }
+.status.outro::before { background: #8A8A8A; }
 
 .ocupacao {
   margin-top: .5rem;
@@ -525,11 +524,15 @@ code {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: opacity .3s;
 }
 
 .card-verso .dica { margin-top: 0; color: var(--preto); }
 
-/* ---------- Carregando (um donut girando) ---------- */
+/* Frase em inglês esperando a tradução */
+.balao.traduzindo { opacity: .55; }
+
+/* ===== Carregando e erro ===== */
 .carregando,
 .erro {
   grid-column: 1 / -1;
@@ -542,6 +545,13 @@ code {
   text-align: center;
   font-family: var(--fonte-titulo);
   font-size: 1.4rem;
+}
+
+.progresso {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: -.6rem;
 }
 
 .donut {
@@ -577,7 +587,7 @@ code {
   margin: -1rem 0 2rem;
 }
 
-/* ---------- Paginação ---------- */
+/* ===== Paginação ===== */
 .paginacao {
   display: flex;
   flex-wrap: wrap;
@@ -610,7 +620,121 @@ code {
   border-radius: 999px;
 }
 
-/* ---------- Rodapé ---------- */
+/* ===== Sobre o autor ===== */
+.autor { scroll-margin-top: 60px; }
+
+.autor-palco {
+  position: relative;
+  overflow: hidden;
+  border-top: var(--borda);
+  padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, var(--ceu-claro) 0%, var(--ceu) 100%);
+}
+
+.autor-container {
+  position: relative;
+  z-index: 1; /* acima das nuvens */
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.autor-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  padding: 1.6rem;
+  rotate: -1deg;
+}
+
+.autor-etiqueta {
+  display: inline-block;
+  font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--amarelo);
+  border: 2px solid var(--preto);
+  border-radius: 999px;
+  padding: .15rem .8rem;
+}
+
+.autor-card h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.1;
+  margin: .6rem 0 1rem;
+  color: var(--amarelo);
+  -webkit-text-stroke: 2px var(--preto);
+  text-shadow: 4px 4px 0 var(--preto);
+}
+
+.autor-dados { display: grid; gap: .5rem; }
+
+.autor-dados div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .2rem 1rem;
+  background: var(--creme);
+  border: 2px solid var(--preto);
+  border-radius: 10px;
+  padding: .45rem .8rem;
+}
+
+.autor-dados dt { font-weight: 800; color: var(--rosa-escuro); }
+.autor-dados dd { font-weight: 700; text-align: right; }
+
+/* Quadro com a cena da cerca viva (o desenho é um SVG no HTML) */
+.cena {
+  width: 100%;
+  max-width: 560px;
+  justify-self: center;
+  aspect-ratio: 10 / 9;
+  overflow: hidden;
+  background: #E8C597;
+  border: var(--borda);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  rotate: 1deg;
+}
+
+.cena-svg { display: block; width: 100%; height: 100%; }
+
+#cerca-frente { transform-box: fill-box; transform-origin: 50% 100%; }
+#cerca-frente.farfalhar { animation: farfalhar .5s ease-out; }
+
+@keyframes farfalhar {
+  25% { transform: scale(1.012, 1.02); }
+  55% { transform: scale(.996, .99); }
+}
+
+/* Em telas grandes a seção fica mais alta que a tela e o palco gruda no
+   topo; é esse trecho extra de scroll que move o personagem. */
+@media (min-width: 801px) and (min-height: 640px) {
+  .autor { height: 180vh; }
+
+  .autor-palco {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 6rem; /* espaço do cabeçalho */
+  }
+
+  .autor-container { width: 100%; }
+
+  /* não deixa a cena ficar mais alta que a tela */
+  .cena { max-width: min(560px, calc((100vh - 11rem) * 10 / 9)); }
+}
+
+/* ===== Rodapé ===== */
 .rodape {
   background: var(--azul-escuro);
   color: var(--branco);
@@ -624,7 +748,7 @@ code {
 
 .rodape a { color: var(--amarelo); font-weight: 800; }
 
-/* ---------- Responsivo ---------- */
+/* ===== Responsivo ===== */
 @media (max-width: 600px) {
   .menu ul { display: none; }
   .hero { min-height: 72vh; }
@@ -632,7 +756,13 @@ code {
   .cards { gap: 1.5rem; }
 }
 
-/* ---------- Acessibilidade: menos movimento ---------- */
+/* No celular a cena vem antes do cartão, para sobrar scroll depois dela */
+@media (max-width: 800px) {
+  .autor-container { grid-template-columns: 1fr; gap: 2rem; }
+  .cena { order: -1; max-width: 420px; }
+}
+
+/* Para quem pediu menos movimento no sistema */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;

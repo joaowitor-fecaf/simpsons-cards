@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Cards dinâmicos dos personagens de Os Simpsons, consumindo a The Simpsons API com JavaScript.">
-  <title>Springfield em Cards | The Simpsons API</title>
+  <title>Springfield e suas Caras | The Simpsons API</title>
 
-  <!-- Fontes: Luckiest Guy (títulos estilo desenho) e Nunito (textos) -->
+  <!-- Luckiest Guy nos títulos, Nunito nos textos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
@@ -15,18 +15,19 @@
 </head>
 <body>
 
-  <!-- ===== CABEÇALHO ===== -->
+  <!-- Cabeçalho -->
   <header class="topo">
     <nav class="menu">
-      <a href="#inicio" class="logo">Springfield<span>em Cards</span></a>
+      <a href="#inicio" class="logo">Springfield<span>e suas Caras</span></a>
       <ul>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#personagens">Personagens</a></li>
+        <li><a href="#autor">Autor</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ===== ABERTURA (céu com nuvens, como na abertura da série) ===== -->
+  <!-- Abertura -->
   <section class="hero" id="inicio">
     <div class="nuvens" aria-hidden="true">
       <span class="nuvem n1"></span>
@@ -37,7 +38,7 @@
 
     <h1 class="titulo-hero">
       <span>Springfield</span>
-      <span>em Cards</span>
+      <span>e suas Caras</span>
     </h1>
 
     <p class="subtitulo">
@@ -48,7 +49,7 @@
     <a href="#personagens" class="botao">Ver personagens</a>
   </section>
 
-  <!-- ===== SOBRE ===== -->
+  <!-- Sobre -->
   <section class="sobre" id="sobre">
     <div class="sobre-container">
       <article class="sobre-card">
@@ -64,7 +65,7 @@
       <article class="sobre-card">
         <h2>Como funciona</h2>
         <p>
-          Nenhum card abaixo está escrito no HTML. O JavaScript busca os dados na API com
+          O JavaScript busca os dados na API com
           <code>fetch</code> e monta cada card com <code>createElement</code> e
           <code>appendChild</code>. <strong>Clique em um card para virá-lo</strong> e ver
           os detalhes do personagem.
@@ -73,7 +74,7 @@
     </div>
   </section>
 
-  <!-- ===== PERSONAGENS (os cards são criados pelo JavaScript) ===== -->
+  <!-- Personagens -->
   <main class="personagens" id="personagens">
     <h2 class="titulo-secao">Personagens</h2>
 
@@ -88,7 +89,7 @@
       </div>
     </div>
 
-    <!-- Container vazio: o JavaScript preenche com os cards -->
+    <!-- Fica vazio aqui: os cards são criados pelo JavaScript -->
     <div id="cards" class="cards" aria-live="polite"></div>
 
     <p id="vazio" class="vazio" hidden>Nenhum personagem encontrado nesta página... D'oh!</p>
@@ -100,13 +101,93 @@
     </nav>
   </main>
 
-  <!-- ===== RODAPÉ ===== -->
+  <!-- Sobre o autor -->
+  <section class="autor" id="autor">
+    <div class="autor-palco">
+      <div class="nuvens" aria-hidden="true">
+        <span class="nuvem n1"></span>
+        <span class="nuvem n4"></span>
+      </div>
+
+      <div class="autor-container">
+        <article class="autor-card">
+          <p class="autor-etiqueta">Autor do site</p>
+          <h2>João Witor</h2>
+
+          <dl class="autor-dados">
+            <div><dt>Curso</dt><dd>Análise e Desenvolvimento de Sistemas</dd></div>
+            <div><dt>Semestre</dt><dd>4º semestre · EAD</dd></div>
+            <div><dt>Disciplina</dt><dd>Web Programming For Front End</dd></div>
+            <div><dt>Instituição</dt><dd>UniFECAF</dd></div>
+          </dl>
+        </article>
+
+        <!-- Cena da cerca viva: o JavaScript move o personagem conforme o scroll -->
+        <div class="cena" id="cena">
+          <svg class="cena-svg" viewBox="0 0 600 540" role="img"
+               aria-label="João Witor desenhado no estilo Os Simpsons, se escondendo atrás de uma cerca viva">
+            <defs>
+              <!-- Mesma textura nas duas camadas de folhagem, para não aparecer emenda -->
+              <pattern id="folhagem" width="150" height="130" patternUnits="userSpaceOnUse">
+                <rect width="150" height="130" fill="#3A9431"/>
+                <g fill="none" stroke="#1F5E19" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 22l4 -8l2 5l4 -9l3 7"/>
+                  <path d="M92 14l4 -8l2 5l4 -9l3 7"/>
+                  <path d="M58 58l4 -8l2 5l4 -9l3 7"/>
+                  <path d="M128 66q3 -9 6 -2q2 -8 5 -1q3 -6 5 1"/>
+                  <path d="M22 100q3 -9 6 -2q2 -8 5 -1q3 -6 5 1"/>
+                  <path d="M100 112l4 -8l2 5l4 -9l3 7"/>
+                  <path d="M140 28q3 -9 6 -2q2 -8 5 -1q3 -6 5 1"/>
+                </g>
+              </pattern>
+
+              <!-- Contorno do muro -->
+              <path id="formato-muro" d="M-10 102 L-1 107 L9 108 L21 97 L33 92 L42 104 L55 105 L66 106 L77 108 L90 106 L100 90 L111 107 L125 98 L139 104 L150 102 L162 93 L176 97 L186 101 L196 105 L206 94 L215 94 L229 107 L242 102 L256 92 L266 103 L276 95 L288 103 L299 104 L311 105 L321 102 L334 90 L347 102 L361 105 L370 101 L380 106 L394 105 L403 97 L415 107 L426 99 L436 95 L447 95 L460 108 L473 97 L482 107 L496 101 L507 106 L521 102 L534 107 L546 107 L557 106 L570 104 L584 105 L595 105 L604 105 L610 550 L-10 550Z"/>
+              <clipPath id="recorte-muro"><use href="#formato-muro"/></clipPath>
+
+              <!-- A linha da borda some perto do topo e da base -->
+              <linearGradient id="contorno-meio" gradientUnits="userSpaceOnUse" x1="0" y1="130" x2="0" y2="520">
+                <stop offset="0" stop-color="#1F5E19" stop-opacity="0"/>
+                <stop offset=".25" stop-color="#1F5E19" stop-opacity="1"/>
+                <stop offset=".6" stop-color="#1F5E19" stop-opacity="1"/>
+                <stop offset=".85" stop-color="#1F5E19" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Casa ao fundo -->
+            <g stroke="#5A3418" stroke-width="2">
+              <rect x="-5" y="-5" width="610" height="130" fill="#E8C597"/>
+              <rect x="40" y="-5" width="270" height="125" fill="#8E4F2C"/>
+              <path d="M85 -5V120M130 -5V120M175 -5V120M220 -5V120M265 -5V120" stroke="#6B3A1F" fill="none"/>
+              <rect x="410" y="18" width="120" height="78" rx="4" fill="#BDEBFF"/>
+              <path d="M470 18V96M410 57H530" fill="none"/>
+            </g>
+
+            <!-- Folhagem de trás -->
+            <use href="#formato-muro" fill="url(#folhagem)" stroke="#1F5E19" stroke-width="2" stroke-linejoin="round"/>
+
+            <!-- Personagem -->
+            <image id="personagem" href="img/joao-simpson.webp" x="70" y="118" width="500" height="795"/>
+
+            <!-- Folhagem da frente (metade direita); a borda é redesenhada pelo JavaScript -->
+            <g id="cerca-frente" clip-path="url(#recorte-muro)">
+              <path id="cerca-frente-folhas" fill="url(#folhagem)" d="M300 0H610V550H300Z"/>
+              <path id="cerca-frente-borda" fill="none" stroke="url(#contorno-meio)" stroke-width="2.2" stroke-linejoin="round" d=""/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
   <footer class="rodape">
     <p>
       Dados: <a href="https://thesimpsonsapi.com/" target="_blank" rel="noopener">The Simpsons API</a>,
       com conteúdo da The Simpsons Wiki sob licença CC BY-SA.
+      Traduções: <a href="https://mymemory.translated.net/" target="_blank" rel="noopener">MyMemory API</a>.
     </p>
-    <p>Projeto acadêmico de Web Development Front-End (UniFECAF), sem fins comerciais. Desenvolvido por João.</p>
+    <p>Projeto acadêmico da disciplina Web Programming For Front End (UniFECAF), sem fins comerciais. Desenvolvido por João Witor.</p>
   </footer>
 
   <script src="js/script.js"></script>
