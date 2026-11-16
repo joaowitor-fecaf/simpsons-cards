@@ -47,7 +47,7 @@ Enquanto os dados carregam, aparece um donut girando. Se a API falhar, uma mensa
 
 ## Funcionalidades
 
-- 🃏 **Cards dinâmicos** com nome, retrato, status e ocupação
+- **Cards dinâmicos** com nome, retrato, status e ocupação
 - **Card que vira em 3D** ao clicar, mostrando idade, data de nascimento, gênero e uma frase do personagem, sorteada a cada virada
 - **Tradução automática** da frase e da ocupação para o português
 - **Inclinação 3D** que acompanha o mouse (no computador)
