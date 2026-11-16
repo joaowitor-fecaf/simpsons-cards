@@ -4,7 +4,7 @@ Uma página web que busca personagens de **Os Simpsons** em tempo real e os exib
 
 **Site publicado:** [joaowitor-fecaf.github.io/simpsons-cards](https://joaowitor-fecaf.github.io/simpsons-cards/)
 
-**Vídeo de apresentação:** [link do YouTube](#)
+**Vídeo de apresentação:** [youtu.be/mrpI9p8qb2I](https://youtu.be/mrpI9p8qb2I)
 
 ---
 
