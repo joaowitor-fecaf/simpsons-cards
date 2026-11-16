@@ -345,7 +345,7 @@ code {
   transform: rotateX(var(--rx, 0deg)) rotateY(calc(180deg + var(--ry, 0deg)));
 }
 
-/* Seguindo o mouse, a resposta precisa ser rápida */
+/* Seguir o mouse, resposta imediata */
 .card.inclinando .card-interno { transition: transform .12s ease-out; }
 
 .card-frente,
